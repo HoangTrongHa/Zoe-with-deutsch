@@ -1,0 +1,284 @@
+# 🤖 Copilot Configuration for SEO Project
+# This file configures GitHub Copilot behavior for this specific project
+
+# Project metadata
+project:
+  name: "SEO Multi-language Application"
+  type: "next-js-typescript"
+  version: "15.5.6"
+  description: "Multi-language SEO-optimized website with dark mode"
+
+# Technology stack
+tech_stack:
+  framework: "Next.js 15"
+  language: "TypeScript"
+  styling: "Tailwind CSS v4"
+  architecture: "Atomic Design"
+  internationalization: true
+  dark_mode: true
+
+# Coding standards
+standards:
+  typescript:
+    strict_mode: true
+    prefer_interfaces: true
+    no_any_types: true
+    proper_generics: true
+    
+  react:
+    component_type: "functional"
+    default_export: false
+    memo_optimization: true
+    hooks_best_practices: true
+    
+  styling:
+    framework: "tailwind"
+    approach: "utility-first"
+    dark_mode: "class-based"
+    responsive: "mobile-first"
+    
+  naming:
+    components: "PascalCase"
+    files: "PascalCase"
+    variables: "camelCase"
+    constants: "SCREAMING_SNAKE_CASE"
+    css_classes: "kebab-case"
+
+# Project structure
+structure:
+  architecture: "atomic_design"
+  components:
+    - "components/atoms/"
+    - "components/molecules/" 
+    - "components/organisms/"
+    - "components/templates/"
+  
+  core_directories:
+    - "app/[locale]/"
+    - "lib/utils/"
+    - "lib/hooks/"
+    - "lib/providers/"
+    - "types/"
+    - "public/locales/"
+
+# Internationalization
+i18n:
+  enabled: true
+  languages:
+    - code: "vi"
+      name: "Vietnamese"
+      primary: true
+    - code: "de" 
+      name: "German"
+    - code: "en"
+      name: "English"
+  
+  routing: "dynamic"
+  fallback: "vi"
+  key_structure: "hierarchical"
+
+# Theme configuration
+themes:
+  default: "dark"
+  support:
+    - "light"
+    - "dark" 
+  persistence: "localStorage"
+  system_sync: true
+  transitions: true
+
+# Performance rules
+performance:
+  bundle_size_limit: "500KB"
+  image_optimization: true
+  code_splitting: true
+  lazy_loading: true
+  web_vitals:
+    lcp_target: "2.5s"
+    fid_target: "100ms"
+    cls_target: "0.1"
+
+# SEO requirements
+seo:
+  metadata_required: true
+  structured_data: true
+  open_graph: true
+  title_length: "55-60"
+  description_length: "150-160"
+  page_speed_target: 90
+
+# Code generation preferences
+code_generation:
+  component_template: |
+    import React, { memo } from 'react';
+    import { cn } from '@/lib/utils';
+    
+    interface {ComponentName}Props {
+      className?: string;
+      children?: React.ReactNode;
+    }
+    
+    const {ComponentName}: React.FC<{ComponentName}Props> = memo(({ 
+      className,
+      children,
+      ...props 
+    }) => {
+      return (
+        <div className={cn('base-styles', className)} {...props}>
+          {children}
+        </div>
+      );
+    });
+    
+    {ComponentName}.displayName = '{ComponentName}';
+    
+    export { {ComponentName} };
+    export type { {ComponentName}Props };
+
+  hook_template: |
+    import { useState, useCallback, useMemo } from 'react';
+    
+    interface Use{HookName}Options {
+      // Options interface
+    }
+    
+    interface Use{HookName}Return {
+      // Return interface  
+    }
+    
+    export const use{HookName} = (options: Use{HookName}Options): Use{HookName}Return => {
+      // Hook implementation
+      return {
+        // Return object
+      };
+    };
+
+  utility_template: |
+    /**
+     * {Description}
+     * @param {ParamType} param - Parameter description
+     * @returns {ReturnType} Return description
+     */
+    export const {functionName} = (param: ParamType): ReturnType => {
+      // Implementation
+    };
+
+# Testing preferences
+testing:
+  framework: "jest"
+  component_testing: "react-testing-library"
+  coverage_target: 80
+  test_file_pattern: "*.test.ts|*.test.tsx"
+  
+  test_template: |
+    import { render, screen } from '@testing-library/react';
+    import { {ComponentName} } from './{ComponentName}';
+    
+    describe('{ComponentName}', () => {
+      it('should render correctly', () => {
+        render(<{ComponentName} />);
+        // Test assertions
+      });
+    });
+
+# Anti-patterns to avoid
+anti_patterns:
+  typescript:
+    - "any_types"
+    - "ts_ignore_comments"
+    - "missing_prop_interfaces"
+    
+  react:
+    - "inline_object_creation"
+    - "missing_dependencies"
+    - "unnecessary_rerenders"
+    - "missing_keys_in_lists"
+    
+  styling:
+    - "inline_styles"
+    - "missing_dark_variants"
+    - "non_responsive"
+    - "hardcoded_values"
+    
+  i18n:
+    - "hardcoded_strings"
+    - "missing_translations"
+    - "incorrect_locale_handling"
+
+# File patterns
+file_patterns:
+  components: "components/**/*.{ts,tsx}"
+  pages: "app/**/*.{ts,tsx}"
+  utilities: "lib/**/*.{ts,tsx}"
+  types: "types/**/*.ts"
+  tests: "**/*.test.{ts,tsx}"
+  stories: "**/*.stories.{ts,tsx}"
+
+# Import preferences
+imports:
+  path_mapping: true
+  alias: "@/"
+  absolute_imports: true
+  sort_order:
+    - "react"
+    - "next"
+    - "external_libraries"
+    - "@/ (internal)"
+    - "relative"
+
+# Code style preferences  
+code_style:
+  indentation: 2
+  quotes: "single"
+  semicolons: true
+  trailing_commas: true
+  line_length: 80
+  object_curly_spacing: true
+  array_bracket_spacing: false
+
+# Optimization preferences
+optimization:
+  tree_shaking: true
+  code_splitting: "route_based"
+  lazy_loading: "component_based"
+  image_optimization: "next_image"
+  font_optimization: "next_font"
+  bundle_analyzer: true
+
+# Accessibility
+accessibility:
+  wcag_level: "AA"
+  semantic_html: true
+  aria_labels: true
+  keyboard_navigation: true
+  screen_reader_support: true
+  color_contrast: true
+
+# Development workflow
+workflow:
+  git_hooks: true
+  linting: "eslint"
+  formatting: "prettier"
+  type_checking: "typescript"
+  pre_commit_checks: true
+  
+# Error handling
+error_handling:
+  boundary_components: true
+  fallback_ui: true
+  error_logging: true
+  user_friendly_messages: true
+  
+# Security
+security:
+  content_security_policy: true
+  xss_protection: true
+  secure_headers: true
+  environment_variables: true
+
+# Monitoring
+monitoring:
+  performance_tracking: true
+  error_tracking: true
+  user_analytics: true
+  core_web_vitals: true

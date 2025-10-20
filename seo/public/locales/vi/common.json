@@ -1,0 +1,132 @@
+{
+  "common": {
+    "hello_world": "Xin chào thế giới",
+    "welcome_message": "Chào mừng bạn đến với ứng dụng SEO đa ngôn ngữ",
+    "navigation": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "services": "Dịch vụ",
+      "blog": "Blog",
+      "contact": "Liên hệ"
+    },
+    "actions": {
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "submit": "Gửi",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "view": "Xem",
+      "back": "Quay lại",
+      "next": "Tiếp theo",
+      "previous": "Trước",
+      "loading": "Đang tải...",
+      "search": "Tìm kiếm",
+      "filter": "Lọc",
+      "sort": "Sắp xếp",
+      "clear": "Xóa",
+      "close": "Đóng",
+      "open": "Mở"
+    },
+    "status": {
+      "success": "Thành công",
+      "error": "Lỗi",
+      "warning": "Cảnh báo",
+      "info": "Thông tin",
+      "loading": "Đang tải"
+    },
+    "forms": {
+      "required": "Trường này là bắt buộc",
+      "invalid_email": "Email không hợp lệ",
+      "invalid_phone": "Số điện thoại không hợp lệ",
+      "password_min_length": "Mật khẩu phải có ít nhất 8 ký tự",
+      "confirm_password": "Xác nhận mật khẩu không khớp"
+    },
+    "time": {
+      "now": "Bây giờ",
+      "minute_ago": "1 phút trước",
+      "minutes_ago": "{count} phút trước",
+      "hour_ago": "1 giờ trước",
+      "hours_ago": "{count} giờ trước",
+      "day_ago": "1 ngày trước",
+      "days_ago": "{count} ngày trước",
+      "week_ago": "1 tuần trước",
+      "weeks_ago": "{count} tuần trước",
+      "month_ago": "1 tháng trước",
+      "months_ago": "{count} tháng trước",
+      "year_ago": "1 năm trước",
+      "years_ago": "{count} năm trước"
+    },
+    "theme": {
+      "light": "Sáng",
+      "dark": "Tối",
+      "toggle": "Chuyển đổi chế độ"
+    },
+    "language": {
+      "vietnamese": "Tiếng Việt",
+      "german": "Tiếng Đức",
+      "english": "Tiếng Anh",
+      "switch": "Đổi ngôn ngữ"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Trang chủ - SEO App",
+      "description": "Ứng dụng SEO đa ngôn ngữ hiện đại",
+      "hero": {
+        "title": "Chào mừng đến với SEO App",
+        "subtitle": "Ứng dụng tối ưu hóa công cụ tìm kiếm đa ngôn ngữ",
+        "cta": "Bắt đầu ngay"
+      }
+    },
+    "about": {
+      "title": "Giới thiệu - SEO App",
+      "description": "Tìm hiểu về ứng dụng SEO của chúng tôi",
+      "heading": "Về chúng tôi",
+      "content": "Chúng tôi là đội ngũ phát triển ứng dụng SEO chuyên nghiệp..."
+    },
+    "contact": {
+      "title": "Liên hệ - SEO App",
+      "description": "Liên hệ với chúng tôi để được hỗ trợ",
+      "heading": "Liên hệ",
+      "form": {
+        "name": "Họ và tên",
+        "email": "Email",
+        "subject": "Chủ đề",
+        "message": "Tin nhắn",
+        "send": "Gửi tin nhắn"
+      }
+    },
+    "error": {
+      "404": {
+        "title": "Không tìm thấy trang",
+        "message": "Trang bạn đang tìm kiếm không tồn tại",
+        "back_home": "Về trang chủ"
+      },
+      "500": {
+        "title": "Lỗi máy chủ",
+        "message": "Đã xảy ra lỗi trên máy chủ",
+        "try_again": "Thử lại"
+      }
+    }
+  },
+  "components": {
+    "header": {
+      "logo_alt": "Logo SEO App",
+      "menu_toggle": "Mở/đóng menu"
+    },
+    "footer": {
+      "copyright": "© 2025 SEO App. Tất cả quyền được bảo lưu.",
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng"
+    },
+    "breadcrumb": {
+      "home": "Trang chủ"
+    },
+    "pagination": {
+      "previous": "Trang trước",
+      "next": "Trang sau",
+      "page": "Trang {page}",
+      "of": "của {total}"
+    }
+  }
+}
