@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Typography } from '@/components/atoms';
-import { ThemeToggle, LanguageSwitcher } from '@/components/molecules';
+import { Header } from '@/components/organisms';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -9,152 +9,117 @@ interface HomePageProps {
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   const t = await getTranslations({ locale });
+  
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Header */}
-      <header className="p-4 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
-        <div className="flex items-center gap-4">
-          <Typography variant="h2" weight="bold">
-            SEO App
-          </Typography>
-          
-          {/* Current Hello World Display */}
-          <div className="hidden md:block bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 px-4 py-2 rounded-full">
-            <Typography variant="span" weight="medium" className="text-green-700 dark:text-green-300">
+    <div className="min-h-screen">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-8">
+        {/* Hero Section */}
+        <section className="text-center py-16">
+          <div className="max-w-4xl mx-auto">
+            <Typography variant="h1" className="mb-6 text-4xl md:text-6xl font-marker font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t('common.hello_world')} 👋
             </Typography>
+            
+            <Typography variant="p" className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto font-marker">
+              Welcome to our Othello-inspired multilingual application. Experience the elegant contrast of light and dark themes.
+            </Typography>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors duration-200 font-marker">
+                Get Started
+              </button>
+              <button className="px-8 py-3 border border-border hover:bg-accent transition-colors duration-200 rounded-lg font-marker">
+                Learn More
+              </button>
+            </div>
           </div>
-        </div>
+        </section>
         
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher currentLocale={locale as any} />
-          <ThemeToggle />
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        {/* Hello World Section */}
-        <div className="mb-12">
-          <Typography 
-            variant="h1" 
-            weight="bold" 
-            className="mb-4 text-6xl bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent"
-          >
-            {t('common.hello_world')}
-          </Typography>
+        {/* Content Cards */}
+        <section className="grid md:grid-cols-3 gap-8 py-16">
+          <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <Typography variant="h3" className="mb-2 font-marker">Fast Performance</Typography>
+            <Typography variant="p" className="text-muted-foreground font-marker">
+              Built with Next.js for optimal performance and user experience.
+            </Typography>
+          </div>
           
-          <Typography 
-            variant="p" 
-            className="text-xl text-gray-600 dark:text-gray-300 mb-8"
-          >
-            {t('common.welcome_message')}
-          </Typography>
+          <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
+              </svg>
+            </div>
+            <Typography variant="h3" className="mb-2 font-marker">Multilingual</Typography>
+            <Typography variant="p" className="text-muted-foreground font-marker">
+              Support for multiple languages with seamless switching.
+            </Typography>
+          </div>
+          
+          <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </div>
+            <Typography variant="h3" className="mb-2 font-marker">Dark Mode</Typography>
+            <Typography variant="p" className="text-muted-foreground font-marker">
+              Beautiful dark and light themes inspired by Othello.
+            </Typography>
+          </div>
+        </section>
 
-          {/* Language Demo */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border-2 border-green-200 dark:border-green-700">
-              <div className="text-2xl mb-2">🇻🇳</div>
-              <Typography variant="h3" weight="semibold" className="mb-2 text-green-600 dark:text-green-400">
+        {/* Language Demo Section */}
+        <section className="py-16">
+          <div className="text-center mb-12">
+            <Typography variant="h2" className="mb-4 font-marker">
+              Language Support
+            </Typography>
+            <Typography variant="p" className="text-muted-foreground font-marker">
+              Experience our content in multiple languages
+            </Typography>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl mb-3 text-center">🇻🇳</div>
+              <Typography variant="h3" className="mb-2 text-center text-primary font-marker">
                 Tiếng Việt
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+              <Typography variant="p" className="text-center text-muted-foreground font-marker">
                 Xin chào thế giới
               </Typography>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border-2 border-blue-200 dark:border-blue-700">
-              <div className="text-2xl mb-2">🇩🇪</div>
-              <Typography variant="h3" weight="semibold" className="mb-2 text-blue-600 dark:text-blue-400">
+            <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl mb-3 text-center">��</div>
+              <Typography variant="h3" className="mb-2 text-center text-primary font-marker">
                 Deutsch
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+              <Typography variant="p" className="text-center text-muted-foreground font-marker">
                 Hallo Welt
               </Typography>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border-2 border-purple-200 dark:border-purple-700">
-              <div className="text-2xl mb-2">🇬🇧</div>
-              <Typography variant="h3" weight="semibold" className="mb-2 text-purple-600 dark:text-purple-400">
+            <div className="p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all duration-300">
+              <div className="text-3xl mb-3 text-center">�🇧</div>
+              <Typography variant="h3" className="mb-2 text-center text-primary font-marker">
                 English
               </Typography>
-              <Typography variant="p" className="text-gray-600 dark:text-gray-300">
+              <Typography variant="p" className="text-center text-muted-foreground font-marker">
                 Hello World
               </Typography>
             </div>
           </div>
-        </div>
-
-        <Typography 
-          variant="h1" 
-          weight="bold" 
-          className="mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-        >
-          {t('pages.home.hero.title')}
-        </Typography>
-        
-        <Typography 
-          variant="p" 
-          className="text-xl mb-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-300"
-        >
-          {t('pages.home.hero.subtitle')}
-        </Typography>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-200">
-            {t('pages.home.hero.cta')}
-          </button>
-          
-          <button className="px-8 py-3 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-medium transition-colors duration-200">
-            {t('common.actions.loading')}
-          </button>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <Typography variant="h2" weight="semibold" align="center" className="mb-12">
-          Tính năng chính
-        </Typography>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-              🌙
-            </div>
-            <Typography variant="h4" weight="semibold" className="mb-2">
-              {t('common.theme.dark')} Mode
-            </Typography>
-            <Typography variant="p" className="text-gray-600 dark:text-gray-300">
-              Giao diện dark mode hiện đại với chuyển đổi mượt mà
-            </Typography>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mb-4">
-              🌍
-            </div>
-            <Typography variant="h4" weight="semibold" className="mb-2">
-              Đa ngôn ngữ
-            </Typography>
-            <Typography variant="p" className="text-gray-600 dark:text-gray-300">
-              Hỗ trợ 3 ngôn ngữ: Việt Nam, Đức, Anh
-            </Typography>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mb-4">
-              ⚛️
-            </div>
-            <Typography variant="h4" weight="semibold" className="mb-2">
-              Atomic Design
-            </Typography>
-            <Typography variant="p" className="text-gray-600 dark:text-gray-300">
-              Kiến trúc component theo mô hình atomic design
-            </Typography>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
   );
 }

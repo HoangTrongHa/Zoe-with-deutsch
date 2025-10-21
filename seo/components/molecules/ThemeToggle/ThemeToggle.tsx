@@ -28,12 +28,16 @@ const ThemeToggle: React.FC<ThemeToggleProps> = memo(({
       variant={variant}
       size={size}
       onClick={toggleTheme}
-      className={cn('p-2', className)}
+      className={cn(
+        'p-2 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors duration-200',
+        className
+      )}
       aria-label="Toggle theme"
     >
       <Icon
         name={theme === 'dark' ? 'sun' : 'moon'}
         size={size === 'sm' ? 'sm' : size === 'lg' ? 'lg' : 'md'}
+        className="text-current"
       />
     </Button>
   );

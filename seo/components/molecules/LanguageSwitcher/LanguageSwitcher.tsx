@@ -1,7 +1,6 @@
 'use client';
 
-import React, { memo, useState } from 'react';
-import { useLocale } from 'next-intl';
+import React, { memo, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { Button } from '@/components/atoms';
 import { Icon } from '@/components/atoms';
@@ -14,23 +13,46 @@ interface LanguageSwitcherProps {
   currentLocale?: Locale; // Add optional locale prop
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = memo(({ className, currentLocale }) => {
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = memo(({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
-  // Use passed locale or fallback to useLocale hook
-  const locale = currentLocale || (useLocale() as Locale);
   const router = useRouter();
   const pathname = usePathname();
+  
+  // Get locale from route pathname
+  const getLocaleFromRoute = (): Locale => {
+    const segments = pathname.split('/');
+    const routeLocale = segments[1] as Locale;
+    return LOCALE_CONFIG[routeLocale] ? routeLocale : 'vi'; // fallback to 'vi' if invalid
+  };
+  
+  const locale = getLocaleFromRoute();
+  
+  // currentConfig will get info from route to determine language
+  const [currentConfig, setCurrentConfig] = useState(() => LOCALE_CONFIG[locale]);
+
+  // Update currentConfig when route changes
+  useEffect(() => {
+    const newLocale = getLocaleFromRoute();
+    const newConfig = LOCALE_CONFIG[newLocale];
+    setCurrentConfig(newConfig);
+  }, [pathname]);
 
   const switchLanguage = (newLocale: Locale) => {
+    console.log(newLocale);
     const segments = pathname.split('/');
     segments[1] = newLocale;
     const newPath = segments.join('/');
-    
+    const newConfig = LOCALE_CONFIG[newLocale];
+    setCurrentConfig(newConfig);
+    console.log(newConfig);
     router.push(newPath);
     setIsOpen(false);
   };
 
-  const currentConfig = LOCALE_CONFIG[locale];
+  const getConfigName = (localeKey: Locale) => {
+    const config = LOCALE_CONFIG[localeKey];
+    return config ? config.name : localeKey;
+  };
 
   return (
     <div className={cn('relative', className)} suppressHydrationWarning>
@@ -38,15 +60,15 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = memo(({ className, cur
         variant="ghost"
         size="md"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2"
+        className="flex items-center gap-2 border border-foreground/20 text-foreground hover:bg-foreground hover:text-background transition-colors duration-200"
         aria-label="Switch language"
       >
-        <Icon name="globe" size="sm" />
-        <Typography variant="span" className="hidden sm:inline">
+        <Icon name="globe" size="sm" className="text-current" />
+        <Typography variant="span" className="hidden sm:inline text-current">
           {currentConfig.name}
         </Typography>
         <span className="text-lg sm:hidden">{currentConfig.flag}</span>
-        <Icon name="chevronDown" size="sm" />
+        <Icon name="chevronDown" size="sm" className="text-current" />
       </Button>
 
       {isOpen && (
@@ -58,23 +80,23 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = memo(({ className, cur
           />
           
           {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-48 rounded-lg bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 z-20">
+          <div className="absolute right-0 mt-2 w-48 rounded-lg bg-background shadow-lg border border-border z-20">
             <div className="py-1">
               {Object.entries(LOCALE_CONFIG).map(([localeKey, config]) => (
                 <button
                   key={localeKey}
                   onClick={() => switchLanguage(localeKey as Locale)}
                   className={cn(
-                    'w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3',
-                    locale === localeKey && 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
+                    'w-full px-4 py-2 text-left hover:bg-secondary text-foreground flex items-center gap-3 transition-colors duration-200',
+                    locale === localeKey && 'bg-primary/10 text-primary'
                   )}
                 >
                   <span className="text-lg">{config.flag}</span>
-                  <Typography variant="span" className="text-sm">
+                  <Typography variant="span" className="text-sm text-current">
                     {config.name}
                   </Typography>
                   {locale === localeKey && (
-                    <Icon name="check" size="sm" className="ml-auto" />
+                    <Icon name="check" size="sm" className="ml-auto text-current" />
                   )}
                 </button>
               ))}

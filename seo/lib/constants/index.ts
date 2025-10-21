@@ -13,17 +13,17 @@ export const DEFAULT_LOCALE: Locale = 'vi';
 export const LOCALE_CONFIG = {
   vi: {
     name: 'Tiếng Việt',
-    flag: '🇻🇳',
+    flag: 'VN',
     direction: 'ltr',
   },
   de: {
     name: 'Deutsch',
-    flag: '🇩🇪',
+    flag: 'DE',
     direction: 'ltr',
   },
   en: {
     name: 'English',
-    flag: '🇬🇧',
+    flag: 'EN',
     direction: 'ltr',
   },
 } as const;

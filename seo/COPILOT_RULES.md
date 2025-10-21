@@ -18,6 +18,14 @@
 - ♿ **Accessibility**: WCAG 2.1 AA compliance
 - 🎭 **Theme System**: Consistent design tokens and color schemes
 
+### 🌐 **TRANSLATIONS & I18N RULES**
+- ❌ **NEVER** use `useTranslations('common.language')` or nested namespace paths
+- ✅ **ALWAYS** use `useTranslations()` without namespace for root access
+- ✅ **USE** full key paths like `t('common.language.vietnamese')`
+- ✅ **PROVIDE** fallback values: `t('key') || 'Fallback Text'`
+- 📁 **Structure**: All translations in `public/locales/{locale}/common.json`
+- 🔑 **Keys**: Use dot notation for nested access (e.g., `common.navigation.home`)
+
 ### 🏗️ **ARCHITECTURE PATTERNS**
 
 #### **Atomic Design Structure**
