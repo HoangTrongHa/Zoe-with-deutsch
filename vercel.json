@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "buildCommand": "cd seo && npm run build",
+  "outputDirectory": "seo/.next",
+  "installCommand": "cd seo && npm install",
+  "framework": "nextjs",
+  "functions": {
+    "seo/app/**": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
