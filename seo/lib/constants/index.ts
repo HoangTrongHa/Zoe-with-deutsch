@@ -104,6 +104,8 @@ export const CONTACT_INFO = {
   email: 'contact@muoideutsch.com',
   address: 'Hà Nội, Việt Nam',
   zalo: '0123 456 789',
+  facebook: '/muoideutsch',
+  instagram: '@muoideutsch',
 } as const;
 
 // Error messages
