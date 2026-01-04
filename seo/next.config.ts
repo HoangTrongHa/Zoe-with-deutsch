@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin('./i18n.ts');
+import createMDX from '@next/mdx';
 
 const nextConfig: NextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   turbopack: {
     rules: {
       '*.svg': {
@@ -43,4 +42,11 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+});
+
+export default withMDX(nextConfig);

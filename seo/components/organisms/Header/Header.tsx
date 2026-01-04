@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import { LanguageSwitcher } from '@/components/molecules/LanguageSwitcher';
+import Link from 'next/link';
 import { ThemeToggle } from '@/components/molecules/ThemeToggle';
 import { Typography } from '@/components/atoms/Typography';
 import styles from './Header.module.css';
@@ -12,34 +11,38 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
-  const t = useTranslations();
-
   return (
     <header className={`${styles.header} ${className}`}>
       <div className={styles.container}>
         <div className={styles.headerContent}>
-          {/* Navigation - right aligned, uses Kalam font */}
+          {/* Logo/Brand */}
+          <Link href="/" className="mr-auto">
+            <Typography variant="h3" className="font-bold text-primary">
+              Muối Deutsch 🧂
+            </Typography>
+          </Link>
+
+          {/* Navigation */}
           <nav className={styles.nav}>
-            <a href="#" className={styles.navLink}>
-              {t('common.navigation.home') || 'Home'}
-            </a>
-            <a href="#" className={styles.navLink}>
-              {t('common.navigation.about') || 'About'}
-            </a>
-            <a href="#" className={styles.navLink}>
-              {t('common.navigation.services') || 'Services'}
-            </a>
-            <a href="#" className={styles.navLink}>
-              {t('common.navigation.blog') || 'Blog'}
-            </a>
-            <a href="#" className={styles.navLink}>
-              {t('common.navigation.contact') || 'Contact'}
-            </a>
+            <Link href="/" className={styles.navLink}>
+              Trang chủ
+            </Link>
+            <Link href="/khoa-hoc" className={styles.navLink}>
+              Khóa học
+            </Link>
+            <Link href="/blog" className={styles.navLink}>
+              Blog
+            </Link>
+            <Link href="/ve-chung-toi" className={styles.navLink}>
+              Về chúng tôi
+            </Link>
+            <Link href="/lien-he" className={styles.navLink}>
+              Liên hệ
+            </Link>
           </nav>
 
           {/* Right side controls */}
           <div className={styles.controls}>
-            <LanguageSwitcher />
             <ThemeToggle />
             
             {/* Mobile menu button */}

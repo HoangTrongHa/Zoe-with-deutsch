@@ -2,10 +2,9 @@
  * Global TypeScript type definitions
  */
 
-import { LOCALES, THEMES } from '@/lib/constants';
+import { THEMES } from '@/lib/constants';
 
-// Locale types
-export type Locale = typeof LOCALES[number];
+// Theme types
 export type Theme = typeof THEMES[number];
 
 // Component base props
@@ -73,7 +72,6 @@ export interface User {
   email: string;
   avatar?: string;
   role: 'admin' | 'user' | 'editor';
-  locale: Locale;
   theme: Theme;
   createdAt: string;
   updatedAt: string;
@@ -130,13 +128,12 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   content: string;
-  author: User;
-  category: Category;
-  tags: Tag[];
+  author: string;
+  category: string;
+  tags: string[];
   featuredImage?: string;
   publishedAt: string;
   updatedAt: string;
-  locale: Locale;
   seo: SEOData;
 }
 
@@ -146,7 +143,6 @@ export interface Category {
   slug: string;
   description?: string;
   color?: string;
-  locale: Locale;
 }
 
 export interface Tag {
@@ -154,15 +150,6 @@ export interface Tag {
   name: string;
   slug: string;
   color?: string;
-  locale: Locale;
-}
-
-// Layout types
-export interface LayoutProps {
-  children: React.ReactNode;
-  params: {
-    locale: Locale;
-  };
 }
 
 // Hook return types
@@ -206,10 +193,6 @@ export type DivRef = React.RefObject<HTMLDivElement>;
 
 // Next.js specific types
 export interface PageProps {
-  params: { locale: Locale };
+  params: Record<string, string>;
   searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export interface LayoutParams {
-  locale: Locale;
 }

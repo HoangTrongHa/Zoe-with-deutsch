@@ -2,31 +2,8 @@
  * Application constants and configuration
  */
 
-// Supported locales
-export const LOCALES = ['vi', 'de', 'en'] as const;
-export type Locale = typeof LOCALES[number];
-
-// Default locale
-export const DEFAULT_LOCALE: Locale = 'vi';
-
-// Locale configurations
-export const LOCALE_CONFIG = {
-  vi: {
-    name: 'Tiếng Việt',
-    flag: 'VN',
-    direction: 'ltr',
-  },
-  de: {
-    name: 'Deutsch',
-    flag: 'DE',
-    direction: 'ltr',
-  },
-  en: {
-    name: 'English',
-    flag: 'EN',
-    direction: 'ltr',
-  },
-} as const;
+// Course data
+export * from './courses';
 
 // Theme configurations
 export const THEMES = ['light', 'dark'] as const;
@@ -73,12 +50,12 @@ export const SPACING = {
 
 // SEO defaults
 export const SEO_DEFAULTS = {
-  title: 'SEO Multi-language App',
-  description: 'A modern SEO-optimized multi-language application built with Next.js',
-  keywords: ['seo', 'nextjs', 'typescript', 'multilingual', 'dark mode'],
-  author: 'SEO Team',
+  title: 'Muối Deutsch Center - Trung tâm tiếng Đức uy tín',
+  description: 'Trung tâm tiếng Đức uy tín tại Hà Nội. Khóa học A1-C2, giáo viên bản ngữ, phương pháp hiện đại.',
+  keywords: ['học tiếng đức', 'trung tâm tiếng đức', 'khóa học tiếng đức', 'luyện thi goethe', 'du học đức', 'muối deutsch'],
+  author: 'Muối Deutsch Center',
   image: '/og-image.jpg',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://muoideutsch.vercel.app',
 } as const;
 
 // API endpoints
@@ -91,7 +68,6 @@ export const API_ENDPOINTS = {
 // Storage keys
 export const STORAGE_KEYS = {
   theme: 'theme-preference',
-  locale: 'locale-preference',
   user: 'user-data',
 } as const;
 
@@ -115,13 +91,21 @@ export const IMAGE_CONFIG = {
   },
 } as const;
 
-// Social media links
+// Social media links (placeholders)
 export const SOCIAL_LINKS = {
-  facebook: '',
-  twitter: '',
-  instagram: '',
-  linkedin: '',
-  youtube: '',
+  facebook: '/muoideutsch',
+  instagram: '@muoideutsch',
+  zalo: '0123456789',
+} as const;
+
+// Contact information (placeholders)
+export const CONTACT_INFO = {
+  hotline: '0123 456 789',
+  email: 'contact@muoideutsch.com',
+  address: 'Hà Nội, Việt Nam',
+  zalo: '0123 456 789',
+  facebook: '/muoideutsch',
+  instagram: '@muoideutsch',
 } as const;
 
 // Error messages

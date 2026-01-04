@@ -1,5 +1,5 @@
 export { ThemeToggle } from './ThemeToggle';
-export { LanguageSwitcher } from './LanguageSwitcher';
+export { CourseCard } from './CourseCard';
 
 export type { ThemeToggleProps } from './ThemeToggle';
-export type { LanguageSwitcherProps } from './LanguageSwitcher';
+export type { CourseCardProps } from './CourseCard';
